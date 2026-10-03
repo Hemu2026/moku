@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>木谷食麵所 MOKU</title>
+<meta name="description" content="木谷食麵所｜高雄鳳山的日常麵食。春夏涼麵、秋冬湯麵、四季乾拌麵，一碗麵，四季安心。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:title" content="木谷食麵所 MOKU｜一碗麵，四季安心">
+<meta property="og:description" content="高雄鳳山的日常麵食所。春夏涼麵、秋冬溫補湯麵、四季乾拌麵。">
+<meta property="og:image" content="https://hemu2026.github.io/moku/img/og.jpg">
+<meta property="og:url" content="https://hemu2026.github.io/moku/">
+<meta name="theme-color" content="#4C3626">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+  :root {
+    color-scheme: light;
+    /* 木谷 VI 色彩規範：2322C 50%／4048C 30%／4239C 15%／5803C 5% */
+    --brown: #4C3626;      /* PANTONE 2322 C 主色 */
+    --mocha: #9E836B;      /* PANTONE 4048 C */
+    --greige: #CAC3B5;     /* PANTONE 4239 C */
+    --sage: #C4C6A9;       /* PANTONE 5803 C */
+    --paper: #F4F1EB;      /* 4239 C 淡化，網頁底色 */
+    --paper-2: #E7E1D6;
+    --ink: #2B1F16;
+    --ink-soft: #6A5646;
+    --on-brown: #F4F1EB;
+    --on-brown-soft: #CAC3B5;
+    --todo: #B7791F;
+    --f-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    --f-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    --f-latin: "Nunito Sans", "Avenir Next", "Helvetica Neue", sans-serif;
+    --wrap: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; height: auto; }
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: 20px; }
+  h1, h2, h3 { font-family: var(--f-display); font-weight: 700; letter-spacing: .1em; text-wrap: balance; margin: 0; line-height: 1.4; }
+  p { margin: 0; }
+  .eyebrow {
+    font-family: var(--f-latin); font-weight: 800; font-size: 13px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--brown);
+  }
+  :focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; border-radius: 4px; }
+
+  /* 待補資料：小瓜填好後刪掉 .todo 即可 */
+  .todo { color: var(--todo); border-bottom: 1px dashed var(--todo); }
+
+  /* ---------- header ---------- */
+  .top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid color-mix(in srgb, var(--mocha) 25%, transparent);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-mark {
+    width: 108px; height: 42px; background: var(--brown);
+    -webkit-mask: url(img/logo-mark.png) center/contain no-repeat; mask: url(img/logo-mark.png) center/contain no-repeat;
+  }
+  .brand-name { font-family: var(--f-display); font-size: 17px; font-weight: 500; letter-spacing: .25em; color: var(--brown); }
+  .brand-name small { font-family: var(--f-latin); font-size: 11px; letter-spacing: .3em; color: var(--brown); margin-left: 6px; font-weight: 400; }
+  .nav { display: flex; align-items: center; gap: 22px; font-size: 15px; }
+  .nav a { text-decoration: none; color: var(--ink-soft); }
+  .nav a:hover { color: var(--ink); }
+  .nav a.btn-solid, .nav a.btn-solid:hover { color: var(--paper); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 20px; border-radius: 999px; font-weight: 500; font-size: 15px;
+    text-decoration: none; border: 1.5px solid var(--brown); transition: background .2s, color .2s;
+  }
+  .btn-solid { background: var(--brown); color: var(--paper); }
+  .btn-solid:hover { background: var(--ink); border-color: var(--ink); }
+  .btn-line { background: transparent; color: var(--brown); }
+  .btn-line:hover { background: var(--brown); color: var(--paper); }
+  @media (max-width: 760px) {
+    .nav a:not(.btn) { display: none; }
+    .brand-name small { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding-block: 40px 56px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 48px; align-items: center; }
+  .hero-copy { display: grid; gap: 22px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 68px); letter-spacing: .04em; }
+  .hero h1 { color: var(--brown); }
+  .hero h1 .steam { color: var(--mocha); }
+  .hero .lede { font-size: 17px; color: var(--ink-soft); max-width: 30em; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-photo { position: relative; }
+  .dots {
+    position: absolute; right: -14px; top: -26px; width: 132px; height: 70px; z-index: -1;
+    background: radial-gradient(circle, var(--greige) 0 9px, transparent 10px) 0 0 / 33px 35px;
+  }
+  .hero { position: relative; isolation: isolate; }
+  .hero-photo img { border-radius: 4px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+  .hero-photo .stamp {
+    position: absolute; left: -18px; bottom: -22px;
+    background: var(--paper); padding: 14px 18px; border-radius: 4px;
+    box-shadow: 0 10px 30px -12px rgba(35, 24, 21, .35);
+    display: grid; gap: 2px;
+  }
+  .stamp b { font-family: var(--f-display); font-size: 30px; line-height: 1; color: var(--brown); }
+  .stamp span { font-size: 13px; color: var(--ink-soft); }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-photo { order: -1; }
+    .hero-photo .stamp { left: 12px; bottom: -20px; }
+  }
+
+  /* ---------- 四季 ---------- */
+  .seasons { background: var(--brown); color: var(--on-brown); padding-block: 64px; }
+  .seasons .eyebrow { color: var(--sage); }
+  .seasons-head { display: grid; gap: 10px; margin-bottom: 36px; }
+  .seasons h2 { font-size: clamp(28px, 4vw, 40px); }
+  .season-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid color-mix(in srgb, var(--greige) 35%, transparent); }
+  .season { padding: 26px 24px 8px 0; display: grid; gap: 8px; }
+  .season + .season { padding-left: 24px; border-left: 1px solid color-mix(in srgb, var(--greige) 35%, transparent); }
+  .season .when { font-family: var(--f-latin); font-weight: 700; font-size: 12px; letter-spacing: .2em; color: var(--greige); }
+  .season h3 { font-size: 26px; }
+  .season p { font-size: 15px; opacity: .92; }
+  @media (max-width: 760px) {
+    .season-row { grid-template-columns: 1fr; }
+    .season, .season + .season { padding: 22px 0; border-left: 0; border-bottom: 1px solid color-mix(in srgb, var(--greige) 35%, transparent); }
+  }
+
+  /* ---------- 菜單 ---------- */
+  .menu { padding-block: 80px; }
+  .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+  .section-head > div { display: grid; gap: 10px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 40px); }
+  .section-head p { color: var(--ink-soft); max-width: 28em; }
+  .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+  .dish { display: grid; gap: 12px; align-content: start; }
+  .dish img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; border-radius: 4px; }
+  .dish .cat { font-size: 12px; letter-spacing: .2em; color: var(--brown); }
+  .dish h3 { font-size: 23px; }
+  .dish p { font-size: 15px; color: var(--ink-soft); }
+  @media (max-width: 900px) { .dishes { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .dishes { grid-template-columns: 1fr; } }
+
+  .phrase { display: inline-block; }
+  .new-head { margin-top: 72px; margin-bottom: 24px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .new-head h3 { font-size: 28px; color: var(--brown); }
+  .new-head p { color: var(--ink-soft); font-size: 15px; }
+  .new-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .new-card.protein { background: var(--sage); }
+  .new-card.protein p { color: var(--ink-soft); }
+  .new-card.protein .tag { background: var(--paper); }
+  .new-side { display: grid; gap: 20px; }
+  .new-card { border-radius: 4px; padding: 28px 30px; display: grid; gap: 12px; align-content: start; }
+  .new-card h3 { font-size: 24px; }
+  .new-card p { font-size: 15px; }
+  .new-card.soup { background: var(--brown); color: var(--on-brown); }
+  .new-card.soup p { color: var(--on-brown-soft); }
+  .new-card.rice { background: var(--paper-2); border: 1.5px dashed var(--mocha); }
+  .new-card.rice p { color: var(--ink-soft); }
+  .tag.soon { background: transparent; border: 1px solid var(--mocha); color: var(--brown); }
+  @media (max-width: 760px) { .new-grid { grid-template-columns: 1fr; } .new-card { padding: 24px 22px; } }
+  .new-item {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
+    background: var(--paper-2); border-radius: 4px; overflow: hidden;
+  }
+  .new-item img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 5; }
+  .new-item .txt { padding: 32px 30px; display: grid; gap: 14px; align-content: center; }
+  .tag { justify-self: start; font-size: 13px; letter-spacing: .15em; color: var(--brown); background: var(--sage); padding: 3px 12px; border-radius: 999px; }
+  .new-item h3 { font-size: 28px; }
+  .new-item p { color: var(--ink-soft); }
+  @media (max-width: 760px) {
+    .new-item { grid-template-columns: 1fr; }
+    .new-item .txt { padding: 26px 22px 30px; }
+  }
+
+  /* ---------- 故事 ---------- */
+  .story { background: var(--brown); color: var(--on-brown); padding-block: 88px; position: relative; overflow: hidden; isolation: isolate; }
+  .story .eyebrow { color: var(--sage); }
+  .steam-blob { position: absolute; z-index: -1; width: 380px; left: 38%; top: 40px; fill: var(--mocha); opacity: .22; pointer-events: none; }
+  .story-grid { display: grid; grid-template-columns: .8fr 1fr; gap: 56px; align-items: center; }
+  .story img { border-radius: 4px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+  .story-copy { display: grid; gap: 20px; max-width: 34em; }
+  .story h2 { font-size: clamp(28px, 4vw, 40px); }
+  .story-copy p { color: var(--on-brown-soft); }
+  .story blockquote {
+    margin: 4px 0; font-family: var(--f-display); font-size: 20px; letter-spacing: .1em; line-height: 1.6; color: var(--on-brown);
+    padding-left: 18px; border-left: 3px solid var(--sage);
+  }
+  .lineage { display: flex; gap: 14px; align-items: baseline; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--greige) 35%, transparent); }
+  .lineage b { font-family: var(--f-latin); font-weight: 800; font-size: 44px; color: var(--sage); line-height: 1; font-variant-numeric: tabular-nums; }
+  .lineage span { font-size: 15px; color: var(--on-brown-soft); }
+  @media (max-width: 860px) { .story-grid { grid-template-columns: 1fr; gap: 32px; } .story img { aspect-ratio: 4 / 3; } }
+
+  /* ---------- 堅持 ---------- */
+  .promise { padding-block: 72px; }
+  .promise .num { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--paper-2); color: var(--brown) !important; font-size: 28px !important; font-weight: 700; }
+  .promise-item:nth-child(2) .num { background: var(--sage); }
+  .promise-item:nth-child(3) .num { background: var(--greige); }
+  .promise-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .promise-item { display: grid; gap: 8px; align-content: start; }
+  .promise-item .num { font-family: var(--f-display); line-height: 1; }
+  .promise-item h3 { font-size: 21px; }
+  .promise-item p { font-size: 15px; color: var(--ink-soft); }
+  @media (max-width: 760px) { .promise-row { grid-template-columns: 1fr; gap: 28px; } }
+
+  /* ---------- 門市 + 點餐 ---------- */
+  .visit { background: var(--brown); color: var(--on-brown); padding-block: 80px; }
+  .visit .eyebrow { color: var(--sage); }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .visit h2 { font-size: clamp(28px, 4vw, 40px); margin-block: 10px 28px; }
+  .info { display: grid; gap: 0; margin: 0; }
+  .info > div { display: grid; grid-template-columns: 5.5em 1fr; gap: 12px; padding-block: 14px; border-bottom: 1px solid rgba(246, 240, 232, .15); }
+  .info dt { color: var(--greige); font-size: 14px; letter-spacing: .1em; padding-top: 2px; }
+  .info dd { margin: 0; }
+  .info dd a { text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--greige) 50%, transparent); }
+  .social-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .info .social-pills a { border: 1px solid color-mix(in srgb, var(--greige) 55%, transparent); border-radius: 999px; padding: 2px 14px; font-size: 14px; }
+  .info .social-pills a:hover { background: var(--on-brown); color: var(--brown); }
+  .info .note { display: block; font-size: 14px; color: var(--on-brown-soft); margin-top: 4px; }
+  .info .todo { color: #E3B261; border-color: #E3B261; }
+  .visit .btn-line { border-color: var(--on-brown); color: var(--on-brown); margin-top: 22px; }
+  .visit .btn-line:hover { background: var(--on-brown); color: var(--brown); }
+  .order { display: grid; gap: 14px; align-content: start; }
+  .order-lede { color: rgba(246, 240, 232, .75); font-size: 15px; margin-bottom: 6px; }
+  .order-link {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 16px;
+    padding: 18px 22px; border-radius: 4px; text-decoration: none;
+    background: rgba(246, 240, 232, .07); border: 1px solid rgba(246, 240, 232, .14);
+    transition: background .2s, border-color .2s;
+  }
+  .order-link:hover { background: rgba(246, 240, 232, .13); border-color: var(--sage); }
+  .order-link b { font-size: 18px; font-weight: 500; }
+  .order-link small { grid-column: 1; color: rgba(246, 240, 232, .65); font-size: 13px; }
+  .order-link .arrow { grid-row: 1 / span 2; grid-column: 2; font-family: var(--f-latin); color: var(--sage); font-size: 22px; }
+  .order-link.primary { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .order-link.primary small { color: var(--ink-soft); }
+  .order-link.primary .arrow { color: var(--brown); }
+  .order-link.primary:hover { background: var(--paper-2); }
+  @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  /* ---------- footer ---------- */
+  footer { padding-block: 40px; font-size: 13px; color: var(--ink-soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+  footer .brand-mark { width: 92px; height: 52px; background: var(--brown); -webkit-mask-image: url(img/logo-h.png); mask-image: url(img/logo-h.png); }
+  footer .social { display: flex; gap: 18px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="木谷食麵所 回到頂端">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">食麵所<small>MOKU</small></span>
+    </a>
+    <nav class="nav" aria-label="主選單">
+      <a href="#menu">菜單</a>
+      <a href="#story">品牌故事</a>
+      <a href="#visit">門市資訊</a>
+      <a class="btn btn-solid" href="#order">線上點餐</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Fengshan · Kaohsiung</span>
+        <h1>一碗麵，<br><span class="steam">四季</span>安心。</h1>
+        <p class="lede">高雄鳳山的日常麵食所。春夏有清爽涼麵，秋冬有溫補湯麵，一年四季都有乾拌麵。湯頭與醬料都在自家中央廚房熬煮，麵條每天早上新鮮送到店裡。</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="https://store.dudooeat.com/order/store/80d6edf6506d4a9b8e02e76e9616e19e" target="_blank" rel="noopener">線上點餐・自取</a>
+          <a class="btn btn-line" href="#menu">看招牌菜單</a>
+        </div>
+      </div>
+      <figure class="hero-photo" style="margin:0">
+        <span class="dots" aria-hidden="true"></span>
+        <img src="img/hero.webp" width="1800" height="1158" alt="木谷食麵所的一桌麵食：紅燒牛肉麵、麻醬嫩雞乾麵、椒麻涼麵與涼拌小菜">
+        <div class="stamp"><b>每日直送</b><span>麵條每天早上從製麵廠新鮮送到</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="seasons" aria-labelledby="seasons-title">
+    <div class="wrap">
+      <div class="seasons-head">
+        <span class="eyebrow">Four Seasons Noodles</span>
+        <h2 id="seasons-title">四季麵食，什麼天氣都有剛好的那一碗</h2>
+      </div>
+      <div class="season-row">
+        <div class="season">
+          <span class="when">SPRING · SUMMER</span>
+          <h3>涼麵</h3>
+          <p>沿用林家涼麵 25 年的經典醬汁，麻醬、和風、椒麻，配料有嫩雞、榨菜肉絲、特製酢醬和蔬食。</p>
+        </div>
+        <div class="season">
+          <span class="when">AUTUMN · WINTER</span>
+          <h3>湯麵</h3>
+          <p>清雞湯用在地中藥行一起調配的藥包溫補熬煮，紅燒牛肉湯頭濃郁，天冷來一碗剛剛好。</p>
+        </div>
+        <div class="season">
+          <span class="when">ALL YEAR</span>
+          <h3>乾拌麵</h3>
+          <p>蒜味、麻醬、椒麻、酢醬，口味最多，一週來五天也吃不膩。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Signature</span>
+          <h2 id="menu-title">招牌菜單</h2>
+        </div>
+        <p>第一次來，從這六碗開始。完整菜單與價格請見點餐頁。</p>
+      </div>
+      <div class="dishes">
+        <article class="dish">
+          <img src="img/garlic.webp" width="900" height="593" alt="蒜味乾麵" loading="lazy">
+          <span class="cat">乾拌麵・店長推薦</span>
+          <h3>蒜味乾麵</h3>
+          <p>阿嬤拌的那一碗。蒜末、醬油、一點黑醋，簡單，但吃過就會想念。</p>
+        </article>
+        <article class="dish">
+          <img src="img/chicken-soup.webp" width="900" height="592" alt="清雞湯麵" loading="lazy">
+          <span class="cat">湯麵・招牌</span>
+          <h3>清雞湯麵</h3>
+          <p>和在地中藥行一起調配的中藥包，與雞肉一起熬煮，溫補順口，是秋冬最多人點的一碗。</p>
+        </article>
+        <article class="dish">
+          <img src="img/beef.webp" width="900" height="572" alt="紅燒牛肉麵" loading="lazy">
+          <span class="cat">湯麵</span>
+          <h3>紅燒牛肉麵</h3>
+          <p>大塊牛肉，湯頭濃郁溫潤，想吃飽就點它。</p>
+        </article>
+        <article class="dish">
+          <img src="img/pork.webp" width="900" height="585" alt="椒麻梅花豬乾麵" loading="lazy">
+          <span class="cat">乾拌麵</span>
+          <h3>椒麻梅花豬乾麵</h3>
+          <p>椒麻香氣夠，梅花豬軟嫩，喜歡重口味的人會喜歡。</p>
+        </article>
+        <article class="dish">
+          <img src="img/cold-noodle.webp" width="900" height="582" alt="嫩雞芝麻涼麵" loading="lazy">
+          <span class="cat">涼麵・林家經典醬</span>
+          <h3>嫩雞芝麻涼麵</h3>
+          <p>沿用林家涼麵 25 年的經典芝麻醬，配嫩雞與小黃瓜絲，夏天的午餐首選。</p>
+        </article>
+        <article class="dish">
+          <img src="img/sesame-chicken.webp" width="900" height="600" alt="麻醬嫩雞乾麵" loading="lazy">
+          <span class="cat">乾拌麵</span>
+          <h3>麻醬嫩雞乾麵</h3>
+          <p>濃郁麻醬拌麵，嫩雞片鋪滿，熱的涼的都好吃。</p>
+        </article>
+      </div>
+
+      <div class="new-head">
+        <h3>冬季新品</h3>
+        <p>天氣轉涼，菜單也跟著換季。</p>
+      </div>
+      <div class="new-grid">
+        <div class="new-card protein">
+          <span class="tag">新上市</span>
+          <h3>蛋白麵系列</h3>
+          <p>全新的蛋白麵，搭配嫩雞、滷蛋與時蔬。想吃麵又想吃得清爽，可以試試這一碗。</p>
+        </div>
+        <div class="new-card soup">
+          <span class="tag">新上市</span>
+          <h3>剝皮辣椒雞湯麵</h3>
+          <p>剝皮辣椒的甘甜和微微辣度融進雞湯裡，冬天來一碗，身體都暖起來。</p>
+        </div>
+        <div class="new-card rice">
+          <span class="tag soon">即將上市</span>
+          <h3>不吃麵的那天，也有飯</h3>
+          <p>好多客人問「有沒有賣飯？」飯類新品準備中，口味確定後會先在 LINE 公告。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story" aria-labelledby="story-title">
+    <div class="wrap story-grid">
+      <svg class="steam-blob" viewBox="0 0 200 260" aria-hidden="true"><path d="M70 10c40-8 70 20 62 58-5 24-24 34-20 56 4 20 32 26 44 50 16 32-6 76-46 80-36 4-60-26-52-56 6-22 26-30 22-52-3-16-22-22-34-40C24 76 30 18 70 10z"/></svg>
+      <img src="img/story.webp" width="813" height="1100" alt="用筷子夾起一顆餛飩" loading="lazy">
+      <div class="story-copy">
+        <span class="eyebrow">Brand Concept · MOKU</span>
+        <h2 id="story-title"><span class="phrase">聽見木谷，</span><br><span class="phrase">就是幸福開飯的聲音。</span></h2>
+        <p>「もくもく」是湯頭沸騰的呼吸聲。鍋蓋輕碰、湯面冒起氣泡，那是等待一碗麵上桌最期待的時刻。我們想把這份從聲音開始的幸福留下來，讓每位客人都能找回童年那份期盼與放鬆。</p>
+        <blockquote>延續林家涼麵的好滋味</blockquote>
+        <p>我們始終記得阿嬤當初拌的那碗麵。沒有華麗的點綴，只用蒜末、醬油與黑醋簡單交織，散發最純粹、最直接的香氣。這碗麵，就是今天木谷的蒜味乾麵。</p>
+        <div class="lineage">
+          <b>25</b>
+          <span>年老字號「林家涼麵」的姊妹品牌。林家涼麵本店仍在高雄市新興區林森一路 278 號營業；木谷是同一家人，在鳳山做的另一碗麵。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise" aria-labelledby="promise-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Our Promise</span>
+          <h2 id="promise-title">我們的堅持</h2>
+        </div>
+      </div>
+      <div class="promise-row">
+        <div class="promise-item">
+          <span class="num">廚</span>
+          <h3>自家央廚熬煮</h3>
+          <p>湯頭與醬料都在自家中央廚房用心熬煮，嚴格控管配方與火候，每一碗的味道都一樣穩定。</p>
+        </div>
+        <div class="promise-item">
+          <span class="num">麵</span>
+          <h3>麵條每日直送</h3>
+          <p>合作製麵廠每天早上把新鮮麵條送到店裡。</p>
+        </div>
+        <div class="promise-item">
+          <span class="num">淨</span>
+          <h3>清爽少油</h3>
+          <p>使用天然食材，不加多餘添加物，外食也可以吃得安心。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap visit-grid">
+      <div>
+        <span class="eyebrow">Visit Us</span>
+        <h2 id="visit-title">門市資訊</h2>
+        <dl class="info">
+          <div><dt>地址</dt><dd>高雄市鳳山區曹公路 69 號</dd></div>
+          <div><dt>營業時間</dt><dd>10:00–17:30</dd></div>
+          <div><dt>公休</dt><dd>每週日固定公休，部分週六另有店休<span class="note">每月 1 號在 <a href="https://lin.ee/5YZbxLi" target="_blank" rel="noopener">LINE</a>、<a href="https://www.facebook.com/linjiaman2/" target="_blank" rel="noopener">Facebook</a>、<a href="https://www.instagram.com/mokumoku202558/" target="_blank" rel="noopener">Instagram</a> 公告當月公休日</span></dd></div>
+          <div><dt>電話</dt><dd><a href="tel:077903268">07-790-3268</a>・<a href="tel:0916797618">0916-797-618</a></dd></div>
+          <div><dt>用餐</dt><dd>內用・外帶・自取・外送</dd></div>
+        </dl>
+        <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=%E6%9C%A8%E8%B0%B7%E9%A3%9F%E9%BA%B5%E6%89%80+%E9%AB%98%E9%9B%84%E5%B8%82%E9%B3%B3%E5%B1%B1%E5%8D%80%E6%9B%B9%E5%85%AC%E8%B7%AF69%E8%99%9F" target="_blank" rel="noopener">在 Google 地圖開啟</a>
+      </div>
+      <div class="order" id="order">
+        <span class="eyebrow">Order</span>
+        <h2 style="margin-block:10px 8px">線上點餐</h2>
+        <p class="order-lede">線上先點、到店直接拿，不用排隊等。</p>
+        <a class="order-link primary" href="https://store.dudooeat.com/order/store/80d6edf6506d4a9b8e02e76e9616e19e" target="_blank" rel="noopener">
+          <b>線上點餐・到店自取</b><small>最快的方式，不用等</small><span class="arrow">→</span>
+        </a>
+        <a class="order-link" href="https://lin.ee/5YZbxLi" target="_blank" rel="noopener">
+          <b>加入 LINE 好友</b><small>每月公休、新品、優惠第一手通知</small><span class="arrow">→</span>
+        </a>
+        <a class="order-link" href="https://www.ubereats.com/tw/store/%E6%9C%A8%E8%B0%B7%E9%A3%9F%E9%BA%B5%E6%89%80/6uC45NBdX3G2Nle2sgEVDQ" target="_blank" rel="noopener">
+          <b>Uber Eats 外送</b><small>外送平台價格與門市不同</small><span class="arrow">→</span>
+        </a>
+        <a class="order-link" href="https://www.foodpanda.com.tw/restaurant/e35h/mu-gu-shi-mian-suo" target="_blank" rel="noopener">
+          <b>foodpanda 外送</b><small>外送平台價格與門市不同</small><span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="回到頂端">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>木谷食麵所 MOKU THE NOODLE PLACE・和木餐飲旗下品牌</span>
+    </a>
+    <div class="social">
+      <a href="https://www.instagram.com/mokumoku202558/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/linjiaman2/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://lin.ee/5YZbxLi" target="_blank" rel="noopener">LINE</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
