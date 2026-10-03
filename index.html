@@ -110,7 +110,8 @@
     position: absolute; right: -14px; top: -26px; width: 132px; height: 70px; z-index: -1;
     background: radial-gradient(circle, var(--greige) 0 9px, transparent 10px) 0 0 / 33px 35px;
   }
-  .hero { position: relative; isolation: isolate; }
+  .hero { position: relative; isolation: isolate; overflow-x: clip; }
+  @media (max-width: 860px) { .dots { right: 0; } }
   .hero-photo img { border-radius: 4px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
   .hero-photo .stamp {
     position: absolute; left: -18px; bottom: -22px;
