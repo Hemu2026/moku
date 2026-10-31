@@ -43,7 +43,7 @@
   body { background: var(--page); color: var(--ink); font-family: var(--f-sans); font-size: 16px; line-height: 1.9; letter-spacing: .02em; -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
   img { display: block; max-width: 100%; height: auto; }
-  p { margin: 0; }
+  p { margin: 0; text-wrap: pretty; }
   h1, h2, h3 { font-family: var(--f-serif); font-weight: 700; margin: 0; line-height: 1.35; letter-spacing: .12em; text-wrap: balance; }
   .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: 24px; }
   .en { font-family: var(--f-en); font-weight: 600; letter-spacing: .3em; text-transform: uppercase; font-size: 15px; color: var(--mocha); font-variant-numeric: lining-nums; }
@@ -76,7 +76,7 @@
     .top-row { grid-template-columns: auto 1fr auto; padding-block: 12px; }
     .brand { grid-column: 1; gap: 10px; }
     .brand-mark { width: 76px; height: 30px; }
-    .brand b { font-size: 15px; letter-spacing: .2em; }
+    .brand b { font-size: 15px; letter-spacing: .2em; white-space: nowrap; }
     .brand .lock-en { padding-left: 10px; font-size: 8px; letter-spacing: .1em; }
     .top .btn { grid-column: 3; }
     .nav { display: none; }
@@ -146,11 +146,12 @@
   .season .tops { margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; color: var(--brown); letter-spacing: .08em; line-height: 1.8; }
   @media (max-width: 860px) { .seasons { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } }
 
+  .menu-cta { margin-top: 48px; text-align: center; }
   .promise { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .promise div { padding: 28px 24px; display: grid; gap: 6px; text-align: center; justify-items: center; }
   .promise div + div { border-left: 1px solid var(--line); }
   .promise b { font-family: var(--f-serif); font-weight: 700; font-size: 18px; letter-spacing: .15em; }
-  .promise span { font-size: 14px; color: var(--ink-soft); max-width: 20em; }
+  .promise span { font-size: 14px; color: var(--ink-soft); max-width: 20em; text-wrap: pretty; }
   @media (max-width: 760px) { .promise { grid-template-columns: 1fr; } .promise div + div { border-left: 0; border-top: 1px solid var(--line); } }
 
   /* 冬季新品清單 */
@@ -162,7 +163,7 @@
   .list b small.soon { background: transparent; border: 1px solid var(--mocha); }
   .list span { font-size: 14px; color: var(--ink-soft); }
 
-  .lineage { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: baseline; padding-top: 18px; border-top: 1px solid rgba(202, 195, 181, .35); max-width: 30em; }
+  .lineage { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: baseline; padding-top: 18px; border-top: 1px solid rgba(202, 195, 181, .35); max-width: 30em; }
   .lineage b { font-family: var(--f-en); font-weight: 600; font-size: 48px; line-height: 1; color: var(--sage); font-variant-numeric: lining-nums; }
   .lineage span { font-size: 15px; color: var(--greige); }
   .lineage a { color: var(--page); }
@@ -253,10 +254,10 @@
       <span class="en">Signature</span>
       <h2 id="sig-title">清雞湯麵</h2>
       <blockquote>一碗湯，一次相會。</blockquote>
-      <p>從雞骨、白蘿蔔、紅蘿蔔與洋蔥開始，加入和在地中藥行一起調配的中藥包，在自家中央廚房慢慢熬煮，讓食材的鮮甜與溫潤香氣融進湯裡。</p>
+      <p>從雞骨、白蘿蔔、紅蘿蔔與洋蔥開始，加入中藥包，在自家中央廚房慢慢熬煮，讓食材的鮮甜與溫潤香氣，一點一滴融進湯裡。</p>
       <p>沒有繁複的調味，只有熟悉而純粹的台灣味。</p>
-      <p>雞肉改用去骨雞腿肉，不用邊吃邊挑骨頭；從第一口熱湯到最後一口麵，都是我們想留給你的溫暖。</p>
-      <p class="facts">在地中藥行藥包　／　去骨雞腿肉　／　四季皆宜</p>
+      <p>搭配去骨雞腿肉與現煮麵條，從第一口熱湯到最後一口麵，都是我們想留給你的溫暖。</p>
+      <p class="facts">雞骨慢熬　／　去骨雞腿肉　／　四季皆宜</p>
       <p class="note">＊照片為舊版示意，現已改用去骨雞腿肉</p>
       <div class="takehome"><p><b>想在家也喝得到？</b>清雞湯有真空包，一樣是去骨雞腿肉，帶回家加熱就能喝。購買請洽官方 LINE。</p><a class="btn btn-ghost" href="https://lin.ee/5YZbxLi" target="_blank" rel="noopener">官方 LINE 詢問</a></div>
     </div>
@@ -275,28 +276,29 @@
         <img src="img/s-cold.webp" width="800" height="800" alt="嫩雞芝麻涼麵" loading="lazy">
         <h3>涼麵</h3>
         <span class="en">Spring · Summer</span>
-        <p>沿用林家涼麵 25 年的經典醬汁，麻醬、和風、椒麻、油醋四種口味。</p>
+        <p>延續林家涼麵的經典醬汁，從濃郁麻醬、清爽和風到椒麻、油醋，讓熟悉的台灣味陪伴每個炎熱日常。</p>
         <p class="tops">嫩雞・榨菜肉絲・特製酢醬・蔬食</p>
       </article>
       <article class="season">
         <img src="img/s-soup.webp" width="800" height="800" alt="紅燒牛肉麵" loading="lazy">
         <h3>湯麵</h3>
         <span class="en">Every Season</span>
-        <p>清雞湯用中藥包溫補熬煮；肉燥、榨菜肉絲的湯底用雞骨、紅蘿蔔、洋蔥熬出清甜。</p>
+        <p>雞骨與蔬菜慢熬的清甜湯頭，以及香氣醇厚的紅燒風味。一年四季，都有一碗適合當下的熱湯麵。</p>
         <p class="tops">清雞湯麵・紅燒牛肉麵<br>肉燥湯麵・榨菜肉絲湯麵</p>
       </article>
       <article class="season">
         <img src="img/s-dry.webp" width="800" height="800" alt="蒜味乾麵" loading="lazy">
         <h3>乾拌麵</h3>
         <span class="en">All Year</span>
-        <p>口味最多，店長推薦阿嬤味道的蒜味乾麵。</p>
+        <p>以蒜香、醬油與黑醋交織出熟悉的台灣味。簡單拌勻，就是讓人想一吃再吃的日常好味道。</p>
         <p class="tops">蒜味・麻醬嫩雞・椒麻梅花豬<br>酢醬・肉燥乾麵</p>
       </article>
     </div>
+    <div class="menu-cta"><a class="btn btn-ghost" href="https://store.dudooeat.com/order/store/80d6edf6506d4a9b8e02e76e9616e19e" target="_blank" rel="noopener">查看完整菜單・線上點餐</a></div>
     <div class="promise">
-      <div><b>自家央廚熬煮</b><span>湯頭與醬料都在自家中央廚房熬煮，每一碗味道都一樣穩定</span></div>
-      <div><b>麵條每日直送</b><span>合作製麵廠每天早上把新鮮麵條送到店裡</span></div>
-      <div><b>清爽少油</b><span>使用天然食材，外食也可以吃得安心</span></div>
+      <div><b>自家熬製</b><span>湯頭與醬料用心製作，延續熟悉的家常滋味。</span></div>
+      <div><b>新鮮麵條</b><span>合作製麵廠每日配送，現點現煮。</span></div>
+      <div><b>熟悉台灣味</b><span>從林家的經典味道出發，做出四季都能安心享用的麵食。</span></div>
     </div>
   </section>
 
@@ -309,9 +311,10 @@
       <h2 id="winter-title">冬季新品</h2>
       <p>天氣轉涼，菜單也跟著換季。</p>
       <ul class="list">
-        <li><b>蛋白麵系列<small>新上市</small></b><span>全新的蛋白麵，搭配嫩雞、滷蛋與時蔬</span></li>
-        <li><b>剝皮辣椒雞湯麵<small>新上市</small></b><span>剝皮辣椒的甘甜和微微辣度融進雞湯，冬天來一碗身體都暖起來</span></li>
-        <li><b>飯類新品<small class="soon">即將上市</small></b><span>好多客人問「有沒有賣飯？」口味確定後會先在 LINE 公告</span></li>
+        <li><b>蛋白麵系列<small>新上市</small></b><span>每份麵體約含 20g 蛋白質，搭配嫩雞、滷蛋與時蔬，讓日常的一碗麵有更多選擇。</span></li>
+        <li><b>剝皮辣椒雞湯麵<small>新上市</small></b><span>剝皮辣椒的甘甜與微微辣度，融進溫潤雞湯，為冷天留下一碗暖意。</span></li>
+        <!-- 飯類暫時下架，重新上架時拿掉 hidden -->
+        <li hidden><b>飯類新品<small class="soon">即將上市</small></b><span>好多客人問「有沒有賣飯？」口味確定後會先在 LINE 公告</span></li>
       </ul>
     </div>
   </section>
@@ -327,8 +330,7 @@
       <blockquote>延續林家涼麵的好滋味</blockquote>
       <p>我們始終記得阿嬤當初拌的那碗麵。沒有華麗的點綴，只用蒜末、醬油與黑醋簡單交織，散發最純粹、最直接的香氣。這碗麵，就是今天木谷的蒜味乾麵。</p>
       <div class="lineage">
-        <b>25</b>
-        <span>年老字號「<a href="https://hemu2026.github.io/linjia/" target="_blank" rel="noopener">林家涼麵</a>」的姊妹品牌。林家涼麵本店仍在高雄市新興區林森一路 278 號營業；木谷是同一家人，在鳳山做的另一碗麵。</span>
+        <span>延續二十餘年經典滋味的老字號「<a href="https://hemu2026.github.io/linjia/" target="_blank" rel="noopener">林家涼麵</a>」的姊妹品牌。林家涼麵本店仍在高雄市新興區林森一路 278 號營業；木谷是同一家人，在鳳山做的另一碗麵。</span>
       </div>
     </div>
   </section>
